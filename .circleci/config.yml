@@ -1,9 +1,14 @@
-version: 2.1
-
-orbs:
-  cypress: cypress-io/cypress@1.1.0
-
-workflows:
+version: 2
+jobs:
   build:
-    jobs:
-      - cypress/run
+    docker:
+      - image: cypress/base:16.14.0
+    steps:
+      - checkout
+      - run:
+          name: e2e tests
+          command: |
+            npm install
+            yarn run cypress run
+      - store_artifacts:
+          path: /root/project/cypress/videos/
