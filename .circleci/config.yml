@@ -8,6 +8,6 @@ jobs:
       - run:
           name: e2e tests
           command: |
-            npm run cypress run
+            cypress run
       - store_artifacts:
           path: /root/project/cypress/videos/
